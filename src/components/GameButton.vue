@@ -21,7 +21,6 @@ button {
   border-radius: 6px;
   border: none;
   padding: 30px;
-  margin: 4px;
 
   &:hover {
     &:after {
