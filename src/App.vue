@@ -1,14 +1,39 @@
 <template>
   <div class="content">
     <div class="content__title">Simon the game</div>
-    <div class="content__game">
-      <GameButton bgColor="red">dsdas</GameButton>
-      <GameButton bgColor="yellow">dsdas</GameButton>
-      <GameButton bgColor="green">dsdas</GameButton>
-      <GameButton bgColor="blue">dsdas</GameButton>
-    </div>
-    <div class="content__btns">
-      <button class="start">Start game</button>
+    <div class="content__main">
+      <div class="content__game">
+        <div class="row">
+          <GameButton bgColor="red">dsdas</GameButton>
+          <GameButton bgColor="yellow">dsdas</GameButton>
+        </div>
+        <div class="row">
+          <GameButton bgColor="green">dsdas</GameButton>
+          <GameButton bgColor="blue">dsdas</GameButton>
+        </div>
+      </div>
+      <div class="content__options">
+        <div class="level">
+          Choose level:
+          <label>
+            <input type="radio" name="level" value="easy" />
+            Easy
+          </label>
+          <label>
+            <input type="radio" name="level" value="normal" />
+            Normal
+          </label>
+          <label>
+            <input type="radio" name="level" value="hard" />
+            Hard
+          </label>
+        </div>
+        <button class="start">Start game</button>
+        <div class="current-state">
+          Current round: __
+          <div class="lose-note"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +50,7 @@ export default {
 
 <style lang="scss">
 body {
-  background: gray;
+  background: rgb(197, 197, 197);
   margin: 0px;
 }
 </style>
@@ -38,5 +63,37 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100vh;
+
+  &__title {
+    margin: 28px;
+    font-size: 24px;
+  }
+
+  &__main {
+    display: flex;
+  }
+
+  &__game {
+    margin-right: 20px;
+
+    .row {
+      button {
+        &:first-child {
+          margin-right: 8px;
+        }
+      }
+
+      &:first-child {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  &__options {
+    .level {
+     display: flex;
+     flex-direction: column;
+    }
+  }
 }
 </style>
