@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="content">
+    <div class="content__title">Simon the game</div>
+    <div class="content__game">
+      <GameButton bgColor="red">dsdas</GameButton>
+      <GameButton bgColor="yellow">dsdas</GameButton>
+      <GameButton bgColor="green">dsdas</GameButton>
+      <GameButton bgColor="blue">dsdas</GameButton>
+    </div>
+    <div class="content__btns">
+      <button class="start">Start game</button>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GameButton from "./components/GameButton.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    GameButton,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+body {
+  background: gray;
+  margin: 0px;
+}
+</style>
+
+<style lang="scss" scoped>
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
 }
 </style>
