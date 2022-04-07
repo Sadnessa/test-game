@@ -27,6 +27,7 @@ button {
   border: none;
   padding: 60px;
   cursor: pointer;
+  
 
   &:after {
     content: "";
@@ -35,13 +36,15 @@ button {
     height: 100%;
     top: 0px;
     left: 0px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.322);
     border-radius: inherit;
+    outline: 2px solid rgb(201, 201, 201);
+    transition: all ease-in-out 0.2s;
   }
   
   &:hover {
     &:after {
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -55,7 +58,7 @@ button {
     &--active {
       &:after {
         background: transparent;
-        outline: 2px solid rgba(255, 255, 255, 0.849)
+        outline: 2px solid rgba(0, 0, 0, 0.849)
       }
     }
   }
