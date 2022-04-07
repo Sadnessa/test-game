@@ -65,7 +65,7 @@ export default {
         },
       ],
       gameLevel: ["Easy", "Normal", "Hard"],
-      currentLevel: "",
+      currentLevel: "Easy",
       gameChoice: [],
       userChoice: [],
       activeButton: -1,
@@ -95,14 +95,14 @@ export default {
     newRound() {
       this.userChoice = [];
       this.gameChoice.push(randomNum(1, 4));
-      this.gameChoice.forEach((i, index) => this.highlight(index * 1000, i));
-      this.highlight(this.gameChoice.length * 1000, -1);
+      this.gameChoice.forEach((i, index) => this.highlight(index * this.levelDelay, i));
+      this.highlight(this.gameChoice.length * this.levelDelay, -1);
     },
 
     highlight(delay, id) {
       setTimeout(() => {
         this.activeButton = -1;
-        setTimeout(() => (this.activeButton = id), 100);
+        setTimeout(() => (this.activeButton = id), 1000);
       }, delay);
     },
   },
@@ -111,6 +111,16 @@ export default {
     currentRound() {
       return this.gameChoice.length;
     },
+
+    levelDelay() {
+      if(this.currentLevel == "Normal") {
+        return 1000
+      } 
+      if(this.currentLevel == "Hard"){
+        return 400
+      }
+      return 1500
+    }
   },
 };
 </script>
