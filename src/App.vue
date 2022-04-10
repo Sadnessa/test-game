@@ -9,6 +9,7 @@
             :key="item.id"
             :bgColor="item.background"
             :isActive="item.id == activeButton"
+            :id="item.id"
             @click="gameClick(item)"
           ></GameButton>
         </div>

@@ -1,6 +1,11 @@
 <template>
-  <button :style="{ background: bgColor }" :class="{ 'btn--active': isActive }" @click="$emit('click')">
+  <button
+    :style="{ background: bgColor }"
+    :class="{ 'btn--active': isActive }"
+    @click="onClick"
+  >
     <slot></slot>
+    <audio ref="audio" :src="compAudio"></audio>
   </button>
 </template>
 
@@ -16,6 +21,45 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    id: {
+      type: Number,
+      required: true,
+    },
+  },
+
+  watch: {
+    isActive(newValue) {
+      if (newValue) {
+        this.playSound()
+      }
+    },
+  },
+
+  computed: {
+    compAudio() {
+      if (this.id == 2) {
+        return require("../audio/sounds_2.mp3");
+      }
+      if (this.id == 3) {
+        return require("../audio/sounds_3.mp3");
+      }
+      if (this.id == 4) {
+        return require("../audio/sounds_4.mp3");
+      }
+      return require("../audio/sounds_1.mp3");
+    },
+  },
+
+  methods: {
+    onClick() {
+      this.$emit("click");
+      this.playSound();
+    },
+
+    playSound() {
+      this.$refs.audio.play();
+    }
   },
 };
 </script>
@@ -27,7 +71,6 @@ button {
   border: none;
   padding: 60px;
   cursor: pointer;
-  
 
   &:after {
     content: "";
@@ -41,7 +84,7 @@ button {
     outline: 2px solid rgb(201, 201, 201);
     transition: all ease-in-out 0.2s;
   }
-  
+
   &:hover {
     &:after {
       background: rgba(0, 0, 0, 0.2);
@@ -58,7 +101,7 @@ button {
     &--active {
       &:after {
         background: transparent;
-        outline: 2px solid rgba(0, 0, 0, 0.849)
+        outline: 2px solid rgba(0, 0, 0, 0.849);
       }
     }
   }
